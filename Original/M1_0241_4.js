@@ -53,34 +53,15 @@ webform.validators.m1 = function (v, allowOverpass) {
     var values = Drupal.settings.mywebform.values;
 
 //----------------------------------------------
-
-    // Preluarea valorii TRIM
-    var trimValue = 0;
-    if (!isNaN(Number(values['TRIM']))) {
-        trimValue = Number(values['TRIM']);
-    }
-
-    // Verificăm dacă TRIM nu este 3 și există date completate în Capitolul II
-    var cap2HasData = false;
-    for (var i = 1; i <= 16; i++) {
-        for (var j = 1; j <= 12; j++) {
-            if (values['CAP2_R' + (i < 10 ? '0' : '') + i + '_C' + j] && values['CAP2_R' + (i < 10 ? '0' : '') + i + '_C' + j] !== '') {
-                cap2HasData = true;
-                break;
-            }
+    // Apelăm funcția de validare pentru suma din Cap2 și TRIM
+    // Apelăm funcția de validare pentru suma din Cap2 și TRIM
+    // Apelăm funcția de validare pentru suma din Cap2 și CAEM2 vs TRIM
+    var cap2Errors = validateCap2SumAndTrim(values);
+    if (cap2Errors && cap2Errors.length > 0) {
+        for (var i = 0; i < cap2Errors.length; i++) {
+            webform.errors.push(cap2Errors[i]);
         }
-        if (cap2HasData) break;
     }
-
-    // Dacă există date în Cap2 și TRIM nu este egal cu 3, afișăm eroare
-    if (cap2HasData && trimValue != 3) {
-        webform.errors.push({
-            'fieldName': 'TRIM',
-            'weight': 1,
-            'msg': Drupal.t('Eroare: Capitolul II conține date, dar TRIM nu este egal cu 3. Vă rugăm să corectați.')
-        });
-    }
-
 //--------------------------------------------
 
 
@@ -1297,6 +1278,65 @@ webform.validators.m1 = function (v, allowOverpass) {
     webform.validatorsStatus['m1'] = 1;
     validateWebform();
 }
+
+
+function validateCap2SumAndTrim(values) {
+    // Preluăm valoarea TRIM
+    var trimValue = 0;
+    if (!isNaN(Number(values['TRIM']))) {
+        trimValue = Number(values['TRIM']);
+    }
+
+    // Definim câmpurile din Capitolul II
+    var fields = [
+        'CAP2_R010_', 'CAP2_R020_', 'CAP2_R030_', 'CAP2_R040_', 'CAP2_R050_',
+        'CAP2_R060_', 'CAP2_R070_', 'CAP2_R080_', 'CAP2_R090_', 'CAP2_R100_',
+        'CAP2_R110_', 'CAP2_R120_', 'CAP2_R160_'
+    ];
+
+    // Variabile pentru a aduna valorile și pentru a colecta câmpurile cu date
+    var cap2HasData = false;
+    var caem2HasData = false;
+    var errors = [];
+
+    // Iterăm prin toate rândurile și coloanele din Cap2 pentru a verifica dacă există date sau CAEM2 este completat
+    for (var i = 0; i < fields.length; i++) {
+        for (var j = 1; j <= 12; j++) {
+            var fieldName = fields[i] + 'C' + j;
+            var cellValue = parseFloat(values[fieldName]);
+            var caemField = values['CAP2_CAEM2_C' + j]; // CAEM2 specific coloanei
+
+            // Verificăm dacă există date în Capitolul II
+            if (!isNaN(cellValue) && cellValue > 0) {
+                cap2HasData = true;
+            }
+
+            // Verificăm dacă CAEM2 este completat
+            if (caemField && caemField !== '') {
+                caem2HasData = true;
+            }
+        }
+    }
+
+    // Dacă există date în Cap2 sau CAEM2 este completat și TRIM nu este 3, afișăm eroare
+    if ((cap2HasData || caem2HasData) && trimValue != 3) {
+        errors.push({
+            'fieldName': 'TRIM',
+            'weight': 1,
+            'msg': Drupal.t('Eroare: Capitolul II conține date sau CAEM2 este selectat, dar TRIM nu este egal cu 3. Vă rugăm să corectați.')
+        });
+    }
+
+    // Returnăm toate erorile dacă există
+    if (errors.length > 0) {
+        return errors;
+    }
+
+    return null; // Nicio eroare
+}
+
+
+
 
 function sort_errors_warinings(a, b) {
     if (!a.hasOwnProperty('weight')) {
