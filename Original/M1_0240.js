@@ -54,33 +54,6 @@ webform.validators.m1 = function (v, allowOverpass) {
 
 //----------------------------------------------
 
-    // Preluarea valorii TRIM
-    var trimValue = 0;
-    if (!isNaN(Number(values['TRIM']))) {
-        trimValue = Number(values['TRIM']);
-    }
-
-    // Verificăm dacă TRIM nu este 3 și există date completate în Capitolul II
-    var cap2HasData = false;
-    for (var i = 1; i <= 16; i++) {
-        for (var j = 1; j <= 12; j++) {
-            if (values['CAP2_R' + (i < 10 ? '0' : '') + i + '_C' + j] && values['CAP2_R' + (i < 10 ? '0' : '') + i + '_C' + j] !== '') {
-                cap2HasData = true;
-                break;
-            }
-        }
-        if (cap2HasData) break;
-    }
-
-    // Dacă există date în Cap2 și TRIM nu este egal cu 3, afișăm eroare
-    if (cap2HasData && trimValue != 3) {
-        webform.errors.push({
-            'fieldName': 'TRIM',
-            'weight': 1,
-            'msg': Drupal.t('Eroare: Capitolul II conține date, dar TRIM nu este egal cu 3. Vă rugăm să corectați.')
-        });
-    }
-
 //--------------------------------------------
 
 
