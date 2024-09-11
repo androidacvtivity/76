@@ -39,7 +39,96 @@
             });
 
 
+// Hide Cap2  Start
 
+            // Funcție care deselectează toate câmpurile CAEM2 pe toate coloanele când se schimbă TRIM în afară de 3
+            function deselectCAEM2FieldsOnTrimChange() {
+                for (var h = 2; h < 13; h++) {
+                    // Găsim toate select-urile CAEM din CAP2 pentru coloana curentă (h)
+                    var fields_CAP2_CAEM2 = jQuery('#CAP2 thead tr td:nth-child(' + h + ')').find('select');
+
+                    // Dacă TRIM nu este 3, deselectăm valorile din CAEM2
+                    fields_CAP2_CAEM2.val(null).find('option:selected').prop('selected', false);
+                }
+            }
+
+            // Funcție de validare pentru a verifica dacă codurile CAEM sunt unice pe coloane
+            function validateUniqueCAEMFields() {
+                for (var h = 2; h < 13; h++) {
+                    // Găsim valoarea selectată din CAEM din CAP1 pentru coloana curentă (h)
+                    var fields_CAP1_CAEM3 = jQuery('#CAP1 thead tr td:nth-child(' + h + ')').find('select').val();
+
+                    // Verificăm dacă codurile CAEM se repetă în CAP1
+                    for (var m = 2; m < 13; m++) {
+                        if (h != m) {
+                            var fields_CAP1_CAEM4 = jQuery('#CAP1 thead tr td:nth-child(' + m + ')').find('select').val();
+                            if (fields_CAP1_CAEM4 == fields_CAP1_CAEM3 && fields_CAP1_CAEM4 !== '') {
+                                webform.errors.push({
+                                    'fieldName': 'CAP1_CAEM_C' + m,
+                                    'weight': 31,
+                                    'msg': Drupal.t('Cod eroare: 05-031 - Cod CAEM nu trebuie să se repete.')
+                                });
+                            }
+                        }
+                    }
+
+                    // Găsim valoarea selectată din CAEM din CAP2 pentru coloana curentă (h)
+                    var fields_CAP2_CAEM2 = jQuery('#CAP2 thead tr td:nth-child(' + h + ')').find('select').val();
+
+                    // Verificăm dacă codurile CAEM se repetă în CAP2
+                    for (var m = 2; m < 13; m++) {
+                        if (h != m) {
+                            var fields_CAP2_CAEM3 = jQuery('#CAP2 thead tr td:nth-child(' + m + ')').find('select').val();
+                            if (fields_CAP2_CAEM3 == fields_CAP2_CAEM2 && fields_CAP2_CAEM3 !== '') {
+                                webform.errors.push({
+                                    'fieldName': 'CAP2_CAEM_C' + m,
+                                    'weight': 31,
+                                    'msg': Drupal.t('Cod eroare: 05-031 - Cod CAEM nu trebuie să se repete.')
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Funcție principală care gestionează ascunderea și afișarea capitolului CAP2 în funcție de TRIM
+            function toggleCap2(trimValue) {
+                if (trimValue == 1 || trimValue == 2 || trimValue == 4) {
+                    // Ascundem capitolul 1.2 și tabelul CAP2
+                    jQuery('#header-1-2').hide();
+                    jQuery('#CAP2').hide();
+
+                    // Ascundem toate rândurile asociate
+                    jQuery('#row-header-1, #row-header-2, #row-header-3, #row-10, #row-30, #row-40, #row-50, #row-60, #row-70, #row-80, #row-90, #row-100, #row-110, #row-120, #row-160').hide();
+
+                    // Deselectăm toate câmpurile CAEM2
+                    deselectCAEM2FieldsOnTrimChange();
+
+                } else if (trimValue == 3) {
+                    // Afișăm capitolul 1.2 și tabelul CAP2
+                    jQuery('#header-1-2').show();
+                    jQuery('#CAP2').show();
+
+                    // Afișăm toate rândurile asociate
+                    jQuery('#row-header-1, #row-header-2, #row-header-3, #row-10, #row-30, #row-40, #row-50, #row-60, #row-70, #row-80, #row-90, #row-100, #row-110, #row-120, #row-160').show();
+                }
+            }
+
+            // Eveniment care detectează schimbarea valorii TRIM și aplică funcția toggleCap2
+            jQuery('select[name="TRIM"]').change(function () {
+                var trimValue = jQuery(this).val();
+                toggleCap2(trimValue);
+
+                // Verificăm validarea unicității CAEM după ce s-a schimbat TRIM
+                validateUniqueCAEMFields();
+            });
+
+            // Inițializare: aplicăm funcția toggleCap2 și validarea la încărcarea paginii, în funcție de valoarea inițială TRIM
+            var initialTrimValue = jQuery('select[name="TRIM"]').val();
+            toggleCap2(initialTrimValue);
+            validateUniqueCAEMFields();
+
+// Hide Cap2  End  
 
             
         }
@@ -53,7 +142,7 @@ function fill_section2_caem_fields($element) {
         .myWebformSelect2SetVal(caem)
         .trigger('change');
 }
-
+//Pana la ebform.validators.m1 = function (v, allowOverpass) este asa 
 webform.validators.m1 = function (v, allowOverpass) {
     var values = Drupal.settings.mywebform.values;
 
@@ -806,7 +895,10 @@ webform.validators.m1 = function (v, allowOverpass) {
         // End 05-024*/
     }
     // End 05-015 \ 05-024
-
+    // Nu merge. Nu deselecteaza 
+    //Dupa acest exemplu sau ca material didactic scriemi o validare 
+    //cand trec in alt trimestru in afar de 3 sa deselecteze toate caem2 pe toate colonela 
+    
     // Start 05-031
     for (var h = 2; h < 13; h++) {
         var fields_CAP1_CAEM3 = jQuery('#CAP1 thead tr td:nth-child(' + h + ')').find('select').val();
@@ -837,6 +929,9 @@ webform.validators.m1 = function (v, allowOverpass) {
         }
     }
     // End 05-031
+
+
+
     // End Cap.1
 
     var TRIM = 0;

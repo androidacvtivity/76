@@ -39,7 +39,52 @@
             });
 
 
+// Hide Cap2  Start
 
+            function deselectCAEM2Fields() {
+                // Iterate over all the CAP2_CAEM fields
+                jQuery('select[name^="CAP2_CAEM"]').each(function () {
+                    // Deselect the option without triggering the change event
+                    jQuery(this).val('');  // Set value to an empty string
+                    jQuery(this).find('option:selected').prop('selected', false);  // Deselect manually
+                });
+            }
+            
+            // Funcție pentru a ascunde sau afișa capitolul 1.2 în funcție de TRIM
+            function toggleCap2(trimValue) {
+                if (trimValue == 1 || trimValue == 2 || trimValue == 4) {
+                    // Hide CAP2 and deselect CAEM fields
+                    jQuery('#header-1-2').hide();  // Hide the header
+                    jQuery('#CAP2').hide();  // Hide the table
+
+                    // Hide all rows related to CAP2
+                    jQuery('#row-header-1, #row-header-2, #row-header-3, #row-10, #row-30, #row-40, #row-50, #row-60, #row-70, #row-80, #row-90, #row-100, #row-110, #row-120, #row-160').hide();
+
+                    // Deselect CAEM2 fields
+                    deselectCAEM2Fields();
+
+                } else if (trimValue == 3) {
+                    // Show CAP2 if TRIM is 3
+                    jQuery('#header-1-2').show();
+                    jQuery('#CAP2').show();
+
+                    // Show all rows related to CAP2
+                    jQuery('#row-header-1, #row-header-2, #row-header-3, #row-10, #row-30, #row-40, #row-50, #row-60, #row-70, #row-80, #row-90, #row-100, #row-110, #row-120, #row-160').show();
+                }
+            }
+
+            // Eveniment pentru a detecta schimbarea valorii select TRIM
+            jQuery('select[name="TRIM"]').change(function () {
+                var trimValue = jQuery(this).val();
+                toggleCap2(trimValue);
+            });
+
+            // Apelează funcția toggleCap2 inițial dacă este nevoie
+            var initialTrimValue = jQuery('select[name="TRIM"]').val();
+            toggleCap2(initialTrimValue);
+
+
+// Hide Cap2  End  
 
             
         }
@@ -806,7 +851,10 @@ webform.validators.m1 = function (v, allowOverpass) {
         // End 05-024*/
     }
     // End 05-015 \ 05-024
-
+    // Nu merge. Nu deselecteaza 
+    //Dupa acest exemplu sau ca material didactic scriemi o validare 
+    //cand trec in alt trimestru in afar de 3 sa deselecteze toate caem2 pe toate colonela 
+    
     // Start 05-031
     for (var h = 2; h < 13; h++) {
         var fields_CAP1_CAEM3 = jQuery('#CAP1 thead tr td:nth-child(' + h + ')').find('select').val();
@@ -837,6 +885,9 @@ webform.validators.m1 = function (v, allowOverpass) {
         }
     }
     // End 05-031
+
+
+
     // End Cap.1
 
     var TRIM = 0;
