@@ -1,0 +1,736 @@
+<h3 align="center" class="webform-center webform-bold">
+    ["Capitolul II - Repartizarea efectivului de salariați conform mărimii salariului calculat, pentru luna
+    <u>septembrie*</u>"]
+</h3>
+<br>
+<div class="big-table-wrapper">
+    <table id="CAP2" class="grid" border="1" cellspacing="0" cellpadding="0" width="100%">
+        <thead>
+            <tr align="center">
+                <td rowspan="2" width="36">
+                    <p><strong>["Nr. rd."]</strong></p>
+                </td>
+                <td rowspan="2" width="491">
+                    <p><strong>["Indicatorii"]</strong></p>
+                </td>
+                <td rowspan="2" width="66">
+                    <p><strong>["COD CAEM"]</strong></p>
+                </td>
+                <td width="76">
+                    <p><strong>["Total unitate"]</strong></p>
+                </td>
+                <td width="76">
+                    <p><strong>["Activitatea principală"]</strong></p>
+                </td>
+                <td colspan="10" width="299">
+                    <p><strong>["Activităţi secundare"]</strong></p>
+                </td>
+            </tr>
+            <tr align="center">
+                <td width="76">
+                    <p>0000</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_CAEM_C2;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_CAEM_C3;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_CAEM_C4;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_CAEM_C5;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_CAEM_C6;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_CAEM_C7;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_CAEM_C8;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_CAEM_C9;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_CAEM_C10;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_CAEM_C11;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_CAEM_C12;</p>
+                </td>
+            </tr>
+            <tr align="center">
+                <td width="36">
+                    <p><strong>A</strong></p>
+                </td>
+                <td width="491">
+                    <p><strong>B</strong></p>
+                </td>
+                <td width="66">
+                    <p><strong>C</strong></p>
+                </td>
+                <td width="76">
+                    <p><strong>1</strong></p>
+                </td>
+                <td width="76">
+                    <p><strong>2</strong></p>
+                </td>
+                <td width="75">
+                    <p><strong>3</strong></p>
+                </td>
+                <td width="75">
+                    <p><strong>4</strong></p>
+                </td>
+                <td width="75">
+                    <p><strong>5</strong></p>
+                </td>
+                <td width="75">
+                    <p><strong>6</strong></p>
+                </td>
+                <td width="75">
+                    <p><strong>7</strong></p>
+                </td>
+                <td width="75">
+                    <p><strong>8</strong></p>
+                </td>
+                <td width="75">
+                    <p><strong>9</strong></p>
+                </td>
+                <td width="75">
+                    <p><strong>10</strong></p>
+                </td>
+                <td width="75">
+                    <p><strong>11</strong></p>
+                </td>
+                <td width="75">
+                    <p><strong>12</strong></p>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr align="center">
+                <td width="36">
+                    <p>10</p>
+                </td>
+                <td width="491" align="left">
+                    <p>
+                        ["Efectivul de salariați care a lucrat luna septembrie <b>în întregime și ziua deplină</b>
+                        (exclusiv salariații cu
+                        contract
+                        individual de muncă/raport de serviciu suspendat și cumularzi externi)"]
+                    </p>
+                </td>
+                <td width="66">
+                    <p>["persoane"]</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R010_C1;</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R010_C2;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R010_C3;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R010_C4;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R010_C5;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R010_C6;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R010_C7;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R010_C8;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R010_C9;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R010_C10;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R010_C11;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R010_C12;</p>
+                </td>
+            </tr>
+            <tr align="center">
+                <td width="36">
+                    <p>20</p>
+                </td>
+                <td width="491" align="left">
+                    <p>["din care, numărul de salariați cărora li s-a calculat salariul în mărime de:"]</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;["până la 5000 lei"]</p>
+                </td>
+                <td width="66">
+                    <p>["persoane"]</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R020_C1;</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R020_C2;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R020_C3;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R020_C4;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R020_C5;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R020_C6;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R020_C7;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R020_C8;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R020_C9;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R020_C10;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R020_C11;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R020_C12;</p>
+                </td>
+            </tr>
+            <tr align="center">
+                <td width="36">
+                    <p>30</p>
+                </td>
+                <td width="491" align="left">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;["5000,00"]</p>
+                </td>
+                <td width="66">
+                    <p>["persoane"]</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R030_C1;</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R030_C2;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R030_C3;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R030_C4;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R030_C5;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R030_C6;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R030_C7;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R030_C8;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R030_C9;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R030_C10;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R030_C11;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R030_C12;</p>
+                </td>
+            </tr>
+            <tr align="center">
+                <td width="36">
+                    <p>40</p>
+                </td>
+                <td width="491" align="left">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;["5000,01 – 6000,00"]</p>
+                </td>
+                <td width="66">
+                    <p>["persoane"]</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R040_C1;</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R040_C2;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R040_C3;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R040_C4;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R040_C5;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R040_C6;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R040_C7;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R040_C8;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R040_C9;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R040_C10;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R040_C11;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R040_C12;</p>
+                </td>
+            </tr>
+            <tr align="center">
+                <td width="36">
+                    <p>50</p>
+                </td>
+                <td width="491" align="left">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;["6000,01 – 7000,00"]</p>
+                </td>
+                <td width="66">
+                    <p>["persoane"]</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R050_C1;</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R050_C2;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R050_C3;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R050_C4;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R050_C5;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R050_C6;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R050_C7;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R050_C8;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R050_C9;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R050_C10;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R050_C11;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R050_C12;</p>
+                </td>
+            </tr>
+            <tr align="center">
+                <td width="36">
+                    <p>60</p>
+                </td>
+                <td width="491" align="left">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;["7000,01 – 8000,00"]</p>
+                </td>
+                <td width="66">
+                    <p>["persoane"] </p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R060_C1;</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R060_C2;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R060_C3;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R060_C4;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R060_C5;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R060_C6;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R060_C7;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R060_C8;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R060_C9;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R060_C10;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R060_C11;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R060_C12;</p>
+                </td>
+            </tr>
+            <tr align="center">
+                <td width="36">
+                    <p>70</p>
+                </td>
+                <td width="491" align="left">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;["8000,01 – 10000,00"]</p>
+                </td>
+                <td width="66">
+                    <p>["persoane"] </p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R070_C1;</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R070_C2;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R070_C3;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R070_C4;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R070_C5;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R070_C6;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R070_C7;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R070_C8;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R070_C9;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R070_C10;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R070_C11;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R070_C12;</p>
+                </td>
+            </tr>
+            <tr align="center">
+                <td width="36">
+                    <p>80</p>
+                </td>
+                <td width="491" align="left">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;["10000,01 – 15000,00"]</p>
+                </td>
+                <td width="66">
+                    <p>["persoane"] </p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R080_C1;</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R080_C2;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R080_C3;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R080_C4;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R080_C5;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R080_C6;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R080_C7;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R080_C8;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R080_C9;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R080_C10;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R080_C11;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R080_C12;</p>
+                </td>
+            </tr>
+            <tr align="center">
+                <td width="36">
+                    <p>90</p>
+                </td>
+                <td width="491" align="left">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;["15000,01 – 20000,00"]</p>
+                </td>
+                <td width="66">
+                    <p>["persoane"]</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R090_C1;</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R090_C2;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R090_C3;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R090_C4;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R090_C5;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R090_C6;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R090_C7;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R090_C8;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R090_C9;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R090_C10;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R090_C11;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R090_C12;</p>
+                </td>
+            </tr>
+            <tr align="center">
+                <td width="36">
+                    <p>100</p>
+                </td>
+                <td width="491" align="left">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;["20000,01 – 25000,00"]</p>
+                </td>
+                <td width="66">
+                    <p>["persoane"]</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R100_C1;</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R100_C2;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R100_C3;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R100_C4;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R100_C5;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R100_C6;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R100_C7;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R100_C8;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R100_C9;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R100_C10;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R100_C11;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R100_C12;</p>
+                </td>
+            </tr>
+            <tr align="center">
+                <td width="36">
+                    <p>110</p>
+                </td>
+                <td width="491" align="left">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;["25000,01 – 30000,00"]</p>
+                </td>
+                <td width="66">
+                    <p>["persoane"]</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R110_C1;</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R110_C2;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R110_C3;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R110_C4;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R110_C5;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R110_C6;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R110_C7;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R110_C8;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R110_C9;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R110_C10;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R110_C11;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R110_C12;</p>
+                </td>
+            </tr>
+            <tr align="center">
+                <td width="36">
+                    <p>120</p>
+                </td>
+                <td width="491" align="left">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;["peste 30000,01"]</p>
+                </td>
+                <td width="66">
+                    <p>["persoane"]</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R120_C1;</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R120_C2;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R120_C3;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R120_C4;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R120_C5;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R120_C6;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R120_C7;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R120_C8;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R120_C9;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R120_C10;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R120_C11;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R120_C12;</p>
+                </td>
+            </tr>
+            <tr align="center">
+                <td width="36">
+                    <p>160</p>
+                </td>
+                <td width="491" align="left">
+                    <p>["Remunerații calculate salariaților indicați pe rândul 10 pentru luna septembrie"]</p>
+                </td>
+                <td width="66">
+                    <p>["mii lei"]</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R160_C1;</p>
+                </td>
+                <td width="76">
+                    <p>@CAP2_R160_C2;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R160_C3;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R160_C4;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R160_C5;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R160_C6;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R160_C7;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R160_C8;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R160_C9;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R160_C10;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R160_C11;</p>
+                </td>
+                <td width="75">
+                    <p>@CAP2_R160_C12;</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>["*Capitolul II se completează doar la raportarea pentru trimestrul III."]</p>
+</div>
