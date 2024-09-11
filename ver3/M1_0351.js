@@ -39,7 +39,45 @@
             });
 
 
+            // Hide Cap2  Start
+            // Funcție pentru a ascunde sau afișa capitolul 1.2 în funcție de TRIM
+            function toggleCap2(trimValue) {
+                if (trimValue == 1 || trimValue == 2 || trimValue == 4) {
+                    // Ascundere capitol 1.2 dacă TRIM nu este 3
+                    jQuery('#header-1-2').hide();  // Ascunde headerul capitolului 1.2
+                    jQuery('#CAP2').hide();        // Ascunde tabelul corespunzător capitolului 1.2
+                    jQuery('#row-header-1, #row-header-2, #row-header-3, #row-10, #row-30, #row-40, #row-50, #row-60, #row-70, #row-80, #row-90, #row-100, #row-110, #row-120, #row-160, #Caption_Cap2').hide();
 
+                    // Curățăm toate valorile input-urilor din capitolul 1.2
+                    jQuery('input[name^="CAP2"]').val('');
+
+                    // Deselectăm valorile select2 și setăm tabindex la 0
+                    jQuery('select[name^="CAP2_CAEM"]').each(function () {
+                        jQuery(this).val('').trigger('change');  // Deselectăm valorile CAEM2
+                        jQuery(this).next('.select2-container').find('.select2-selection--single').attr('tabindex', '0');  // Setăm tabindex la 0
+                    });
+
+                } else if (trimValue == 3) {
+                    // Afișăm capitolul 1.2 dacă TRIM este 3
+                    jQuery('#header-1-2').show();  // Afișează headerul capitolului 1.2
+                    jQuery('#CAP2').show();        // Afișează tabelul corespunzător capitolului 1.2
+                    jQuery('#row-header-1, #row-header-2, #row-header-3, #row-10, #row-30, #row-40, #row-50, #row-60, #row-70, #row-80, #row-90, #row-100, #row-110, #row-120, #row-160, #Caption_Cap2').show();
+
+                    // Afișăm și lăsăm formularul să funcționeze implicit fără a face modificări
+                }
+            }
+
+            // Eveniment pentru a detecta schimbarea valorii select TRIM
+            jQuery('select[name="TRIM"]').change(function () {
+                var trimValue = jQuery(this).val();
+                toggleCap2(trimValue);
+            });
+
+            // Apelează funcția toggleCap2 inițial dacă este nevoie
+            var initialTrimValue = jQuery('select[name="TRIM"]').val();
+            toggleCap2(initialTrimValue);
+
+            // Hide Cap2  End
 
             
         }
@@ -57,11 +95,7 @@ function fill_section2_caem_fields($element) {
 webform.validators.m1 = function (v, allowOverpass) {
     var values = Drupal.settings.mywebform.values;
 
-    //----------------------------------------------
-    // Apelăm funcția de validare pentru suma din Cap2 și TRIM
-    // Apelăm funcția de validare pentru suma din Cap2 și TRIM
-    // Apelăm funcția de validare pentru suma din Cap2 și CAEM2 vs TRIM
-    // Apelăm funcția de validare pentru suma din Cap2 și TRIM
+  
     var cap2Errors = validateCap2SumAndTrim(values);
     if (cap2Errors && cap2Errors.length > 0) {
         for (var i = 0; i < cap2Errors.length; i++) {
@@ -77,100 +111,7 @@ webform.validators.m1 = function (v, allowOverpass) {
             webform.errors.push(caem2Errors[i]);
         }
     }
-    //--------------------------------------------
-
-    // Start Cap.1
-    // // Start 05-001
-    // for (var i = 1; i <= 7; i++) {
-    //     if (!isNaN(Number(values["CAP1_R0" + (i) + "0_C1"]))) {
-    //         var R010_70_C1 = Number(values["CAP1_R0" + (i) + "0_C1"]);
-    //     }
-    //     let sum_R010_70_C2_12 = 0;
-    //     for (let s = 2; s <= 12; s++) {
-    //         sum_R010_70_C2_12 += Number(values["CAP1_R0" + (i) + "0_C" + (s)]);
-    //     }
-    //     if ((R010_70_C1 < (sum_R010_70_C2_12)) || (R010_70_C1 > (sum_R010_70_C2_12))) {
-    //         webform.errors.push({
-    //             'fieldName': 'CAP1_R0' + (i) + '0_C1',
-    //             'weight': 1,
-    //             'msg': Drupal.t('Cod eroare: 05-001 - Col.1 = Suma Col.2-12 pe toate rândurile (Cap.1-2), excepție R.120 Cap.1 -> [@R010_70_C1] = [@sum_R010_70_C2_12]', { '@R010_70_C1': R010_70_C1, '@sum_R010_70_C2_12': sum_R010_70_C2_12 })
-    //         });
-    //     }
-    // }
-    // if (!isNaN(Number(values["CAP1_R031_C1"]))) {
-    //     var R031_C1 = Number(values["CAP1_R031_C1"]);
-    // }
-    // let sum_R031_C2_12 = 0;
-    // for (let s = 2; s <= 12; s++) {
-    //     sum_R031_C2_12 += Number(values["CAP1_R031_C" + (s)]);
-    // }
-    // if ((R031_C1 < (sum_R031_C2_12)) || (R031_C1 > (sum_R031_C2_12))) {
-    //     webform.errors.push({
-    //         'fieldName': 'CAP1_R031_C1',
-    //         'weight': 1,
-    //         'msg': Drupal.t('Cod eroare: 05-001 - Col.1 = Suma Col.2-12 pe toate rândurile (Cap.1-2), excepție R.120 Cap.1 -> [@R031_C1] = [@sum_R031_C2_12]', { '@R031_C1': R031_C1, '@sum_R031_C2_12': sum_R031_C2_12 })
-    //     });
-    // }
-
-    // for (var i = 1; i <= 2; i++) {
-    //     if (!isNaN(Number(values["CAP1_R05" + (i) + "_C1"]))) {
-    //         var R051_52_C1 = Number(values["CAP1_R05" + (i) + "_C1"]);
-    //     }
-    //     let sum_R051_52_C2_12 = 0;
-    //     for (let s = 2; s <= 12; s++) {
-    //         sum_R051_52_C2_12 += Number(values["CAP1_R05" + (i) + "_C" + (s)]);
-    //     }
-    //     if ((R051_52_C1 < (sum_R051_52_C2_12)) || (R051_52_C1 > (sum_R051_52_C2_12))) {
-    //         webform.errors.push({
-    //             'fieldName': 'CAP1_R05' + (i) + '_C1',
-    //             'weight': 1,
-    //             'msg': Drupal.t('Cod eroare: 05-001 - Col.1 = Suma Col.2-12 pe toate rândurile (Cap.1-2), excepție R.120 Cap.1 -> [@R051_52_C1] = [@sum_R051_52_C2_12]', { '@R051_52_C1': R051_52_C1, '@sum_R051_52_C2_12': sum_R051_52_C2_12 })
-    //         });
-    //     }
-    // }
-    // for (var i = 1; i <= 4; i++) {
-    //     if (!isNaN(Number(values["CAP1_R07" + (i) + "_C1"]))) {
-    //         var R071_74_C1 = Number(values["CAP1_R07" + (i) + "_C1"]);
-    //     }
-    //     let sum_R071_74_C2_12 = 0;
-    //     for (let s = 2; s <= 12; s++) {
-    //         sum_R071_74_C2_12 += Number(values["CAP1_R07" + (i) + "_C" + (s)]);
-    //     }
-    //     if ((R071_74_C1 < (sum_R071_74_C2_12)) || (R071_74_C1 > (sum_R071_74_C2_12))) {
-    //         webform.errors.push({
-    //             'fieldName': 'CAP1_R07' + (i) + '_C1',
-    //             'weight': 1,
-    //             'msg': Drupal.t('Cod eroare: 05-001 - Col.1 = Suma Col.2-12 pe toate rândurile (Cap.1-2), excepție R.120 Cap.1 -> [@R071_74_C1] = [@sum_R071_74_C2_12]', { '@R071_74_C1': R071_74_C1, '@sum_R071_74_C2_12': sum_R071_74_C2_12 })
-    //         });
-    //     }
-    // }
-    // // End 05-001
-
-    // // Start 05-002
-    // for (var i = 1; i <= 2; i++) {
-    //     if (!isNaN(parseFloat(values["CAP1_R030_C" + (i)]))) {
-    //         var R030_C1_2 = parseFloat(values["CAP1_R030_C" + (i)]);
-    //     }
-    //     if (!isNaN(parseFloat(values["CAP1_R070_C" + (i)]))) {
-    //         var R070_C1_2 = parseFloat(values["CAP1_R070_C" + (i)]);
-    //     }
-    //     if (!isNaN(parseFloat(values["CAP1_R073_C" + (i)]))) {
-    //         var R073_C1_2 = parseFloat(values["CAP1_R073_C" + (i)]);
-    //     }
-    //     if (!isNaN(parseFloat(values["CAP1_R120_C" + (i)]))) {
-    //         var R120_C1_2 = parseFloat(values["CAP1_R120_C" + (i)]);
-    //     }
-    //     var value = 1000 * (([R030_C1_2] == 0 ? 0 : ([R070_C1_2] - [R073_C1_2]) / [R030_C1_2]) / 3);
-    //     value = parseFloat(value).toFixed(1);
-    //     if ((value < (R120_C1_2)) || (value > (R120_C1_2))) {
-    //         webform.errors.push({
-    //             'fieldName': 'CAP1_R120_C' + (i),
-    //             'weight': 2,
-    //             'msg': Drupal.t('Cod eroare: 05-002 - Cap.1: R.120 = {[[(R.70 – R.73) / R.30] : 3] * 1000} pe col. 1, 2 -> [@R120_C1_2] = [@value]', { '@R120_C1_2': R120_C1_2, '@value': value })
-    //         });
-    //     }
-    // }
-    // // End 05-002
+   
 
     // Start 05-00(3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 21, 22, 23, 25, 28, 30, 36, 37, 39, 40, 42, 43, 44, 50, 51)
     var arr_CAP1_inputs_1 = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
@@ -353,37 +294,7 @@ webform.validators.m1 = function (v, allowOverpass) {
                     'msg': Drupal.t('Cod eroare: 05-003 - Cap.1: R.71 ≤ R.70 pe toate coloanele. -> [@CAP1_R071] ≤ [@CAP1_R070]', { '@CAP1_R071': CAP1_R071, '@CAP1_R070': CAP1_R070 })
                 });
             }
-            // End 05-003
-
-            /*// Start 05-004
-            if (CAP1_R070 < CAP1_R072) {
-                webform.errors.push({
-                    'fieldName': 'CAP1_R072_C' + arr_CAP1_inputs_2[i],
-                    'weight': 4,
-                    'msg': Drupal.t('Cod eroare: 05-003 - Cap.1: R.72 ≤ R.70 pe toate coloanele. -> [@CAP1_R072] ≤ [@CAP1_R070]', { '@CAP1_R072': CAP1_R072, '@CAP1_R070': CAP1_R070 })
-                });
-            }
-            // End 05-004
             
-            // Start 05-005
-            if (CAP1_R070 < CAP1_R073) {
-                webform.errors.push({
-                    'fieldName': 'CAP1_R073_C' + arr_CAP1_inputs_2[i],
-                    'weight': 5,
-                    'msg': Drupal.t('Cod eroare: 05-003 - Cap.1: R.73 ≤ R.70 pe toate coloanele. -> [@CAP1_R073] ≤ [@CAP1_R070]', { '@CAP1_R073': CAP1_R073, '@CAP1_R070': CAP1_R070 })
-                });
-            }
-            // End 05-005
-
-            // Start 05-006
-            if (CAP1_R070 < CAP1_R074) {
-                webform.errors.push({
-                    'fieldName': 'CAP1_R074_C' + arr_CAP1_inputs_2[i],
-                    'weight': 6,
-                    'msg': Drupal.t('Cod eroare: 05-003 - Cap.1: R.74 ≤ R.70 pe toate coloanele. -> [@CAP1_R074] ≤ [@CAP1_R070]', { '@CAP1_R074': CAP1_R074, '@CAP1_R070': CAP1_R070 })
-                });
-            }
-            // End 05-006*/
 
             // Start 05-007
             var sum_CAP1_R071_074 = CAP1_R071 + CAP1_R072 + CAP1_R073 + CAP1_R074;
@@ -396,16 +307,7 @@ webform.validators.m1 = function (v, allowOverpass) {
             }
             // End 05-007
 
-            // // Start 05-008
-            // var sum_CAP_R051_052 = CAP1_R051 + CAP1_R052;
-            // if ((CAP1_R050 < (sum_CAP_R051_052)) || (CAP1_R050 > (sum_CAP_R051_052))) {
-            //     webform.errors.push({
-            //         'fieldName': 'CAP1_R050_C' + arr_CAP1_inputs_2[i],
-            //         'weight': 8,
-            //         'msg': Drupal.t('Cod eroare: 05-008 - Cap.1: R.50 = R.(51 + 52) -> [@CAP1_R050] = [@sum_CAP_R051_052]', { '@CAP1_R050': CAP1_R050, '@sum_CAP_R051_052': sum_CAP_R051_052 })
-            //     });
-            // }
-            // // End 05-008
+ 
 
             // Start 05-009
             if (CAP1_R020 > CAP1_R010) {
@@ -469,38 +371,7 @@ webform.validators.m1 = function (v, allowOverpass) {
             }
             // End 05-014
 
-            // // Start 05-022
-            // var CAP1_R070_C1 = 0;
-            // if (!isNaN(parseFloat(values['CAP1_R070_C1']))) {
-            //     CAP1_R070_C1 = parseFloat(values['CAP1_R070_C1']);
-            // }
-            // var CAP1_R070_C2 = 0;
-            // if (!isNaN(parseFloat(values['CAP1_R070_C2']))) {
-            //     CAP1_R070_C2 = parseFloat(values['CAP1_R070_C2']);
-            // }
-            // if (CAP1_R070_C1 > 0 && CAP1_R070_C2 == 0) {
-            //     webform.errors.push({
-            //         'fieldName': 'CAP1_R070_C2',
-            //         'weight': 22,
-            //         'msg': Drupal.t('Cod eroare: 05-022 - Cap.1: Dacă există Col.1 ar trebui să fie Col.2 și invers, R.30 și R.70')
-            //     });
-            // }
-            // var CAP1_R073_C1 = 0;
-            // if (!isNaN(parseFloat(values['CAP1_R073_C1']))) {
-            //     CAP1_R073_C1 = parseFloat(values['CAP1_R073_C1']);
-            // }
-            // var CAP1_R073_C2 = 0;
-            // if (!isNaN(parseFloat(values['CAP1_R073_C2']))) {
-            //     CAP1_R073_C2 = parseFloat(values['CAP1_R073_C2']);
-            // }
-            // if (CAP1_R073_C1 > 0 && CAP1_R073_C2 == 0) {
-            //     webform.errors.push({
-            //         'fieldName': 'CAP1_R073_C2',
-            //         'weight': 22,
-            //         'msg': Drupal.t('Cod eroare: 05-022 - Cap.1: Dacă există Col.1 ar trebui să fie Col.2 și invers, R.30 și R.70')
-            //     });
-            // }
-            // // End 05-022
+            
 
             // Start 05-023
             if (CAP1_R050 > 0 && CAP1_R030 == 0) {
@@ -687,7 +558,7 @@ webform.validators.m1 = function (v, allowOverpass) {
             // End 05-051
         }
     }
-    // End 05-00(3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 21, 22, 23, 25, 28, 30, 36, 37, 39, 40, 42, 43, 44, 50, 51)
+
 
     // Start 05-015 \ 05-024
     for (var k = 2; k < 13; k++) {
@@ -758,55 +629,10 @@ webform.validators.m1 = function (v, allowOverpass) {
         }
         // End 05-015
 
-        /*// Start 05-024
-        if (fields_CAP1_CAEM1 !== '' && k == 2) {
-            if (values['CAP1_R031_C' + k] == '' && select_normal_caem) {
-                warnings_push_r31c_024_secondary(k);
-            } else if (values['CAP1_R031_C' + k] != '') {
-                field_r31_full_error_024(k);
-            }
-            if (values['CAP1_R074_C' + k] == '' && select_normal_caem) {
-                warnings_push_r74c_024_secondary(k);
-            } else if (values['CAP1_R074_C' + k] != '') {
-                field_r74_full_error_024(k);
-            }
-        }
-        function field_r31_full_error_024(k) {
-            if ((fields_CAP1_CAEM1.substring(0, 4) == 'P856') || (fields_CAP1_CAEM1.substring(0, 5) == 'P8553') || (fields_CAP1_CAEM1.substring(0, 5) == 'P8559')) {
-                warnings_push_r31c_024_secondary(k);
-            } else if (select_normal_caem) {
-
-            } else {
-                warnings_push_r31c_024_secondary(k);
-            }
-        }
-        function field_r74_full_error_024(k) {
-            if ((fields_CAP1_CAEM1.substring(0, 4) == 'P856') || (fields_CAP1_CAEM1.substring(0, 5) == 'P8553') || (fields_CAP1_CAEM1.substring(0, 5) == 'P8559')) {
-                warnings_push_r74c_024_secondary(k);
-            } else if (select_normal_caem) {
-
-            } else {
-                warnings_push_r74c_024_secondary(k);
-            }
-        }
-        function warnings_push_r31c_024_secondary(k) {
-            webform.warnings.push({
-                'fieldName': 'CAP1_R031_C' + k,
-                'weight': 24,
-                'msg': Drupal.t('Cod atenționare: 05-024 - Cap.1: R.31 se introduce, dacă Activitatea Principală CAEM = {Q86,Q87,P85}, în afară de P856, P8553 și P8559, Col.1')
-            });
-        }
-        function warnings_push_r74c_024_secondary(k) {
-            webform.warnings.push({
-                'fieldName': 'CAP1_R074_C' + k,
-                'weight': 24,
-                'msg': Drupal.t('Cod atenționare: 05-024 - Cap.1: R.74 se introduce, dacă Activitatea Principală CAEM = {Q86,Q87,P85}, în afară de P856, P8553 și P8559, Col.1')
-            });
-        }
-        // End 05-024*/
+       
     }
     // End 05-015 \ 05-024
-
+    //Acum este deselectat dar la validare se declanseaza 05-031 
     // Start 05-031
     for (var h = 2; h < 13; h++) {
         var fields_CAP1_CAEM3 = jQuery('#CAP1 thead tr td:nth-child(' + h + ')').find('select').val();

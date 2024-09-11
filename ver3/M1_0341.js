@@ -39,7 +39,44 @@
             });
 
 
+// Hide Cap2  Start
 
+
+            // Funcție pentru a ascunde sau afișa capitolul 1.2 în funcție de TRIM
+            function toggleCap2(trimValue) {
+                if (trimValue == 1 || trimValue == 2 || trimValue == 4) {
+                    // Ascundere capitol 1.2 dacă TRIM este 1, 2 sau 4
+                    jQuery('#header-1-2').hide();  // Ascunde headerul capitolului 1.2
+                    jQuery('#CAP2').hide();       // Ascunde tabelul corespunzător capitolului 1.2
+                    jQuery('#row-header-1, #row-header-2, #row-header-3, #row-10, #row-10, #row-30, #row-40, #row-50, #row-60, #row-70, #row-80, #row-90, #row-100, #row-110, #row-120, #row-160, #Caption_Cap2').hide();
+
+                    // Curățăm toate valorile input-urilor din capitolul 1.2
+                    jQuery('input[name^="CAP2"]').val('');
+
+                    // Deselectăm valorile din toate câmpurile CAEM pentru toate coloanele din CAP2 fără a declanșa validarea
+                    jQuery('select[name^="CAP2_CAEM"]').each(function () {
+                        jQuery(this).val(null);  // Setați valoarea la null fără a declanșa 'change'
+                    });
+
+                } else if (trimValue == 3) {
+                    // Afișăm capitolul 1.2 dacă TRIM este 3
+                    jQuery('#header-1-2').show();  // Afișează headerul capitolului 1.2
+                    jQuery('#CAP2').show();       // Afișează tabelul corespunzător capitolului 1.2
+                    jQuery('#row-header-1, #row-header-2, #row-header-3, #row-10, #row-10, #row-30, #row-40, #row-50, #row-60, #row-70, #row-80, #row-90, #row-100, #row-110, #row-120, #row-160, #Caption_Cap2').show();
+                }
+            }
+
+            // Eveniment pentru a detecta schimbarea valorii select TRIM
+            jQuery('select[name="TRIM"]').change(function () {
+                var trimValue = jQuery(this).val();
+                toggleCap2(trimValue);
+            });
+
+            // Apelează funcția toggleCap2 inițial dacă este nevoie
+            var initialTrimValue = jQuery('select[name="TRIM"]').val();
+            toggleCap2(initialTrimValue);
+
+// Hide Cap2  End  
 
             
         }
