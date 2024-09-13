@@ -331,10 +331,24 @@ webform.validators.m1 = function (v, allowOverpass) {
             // End 05-010
 
             // Start 05-012
-            var raport1 = CAP1_R030 + CAP1_R040;
+           
+            // var raport1 = CAP1_R030 + CAP1_R040;
+            // if (raport1 > 0) {
+            //     var calcul1 = (CAP1_R050 * 1000) / raport1;
+            //     calcul1 = parseFloat(calcul1).toFixed(1);
+            //     if (calcul1 > 570 || calcul1 < 450) {
+            //         webform.warnings.push({
+            //             'fieldName': 'CAP1_R050_C' + arr_CAP1_inputs_2[i],
+            //             'weight': 12,
+            //             'msg': Drupal.t('Cod atenționare: 05-012 - Cap.1: R.50 * 1000 / (R.30 + R.40) ≤ 570 și > 450 pe toate coloanele. -> [@sum]', { '@sum': calcul1 })
+            //         });
+            //     }
+            // }
+
+            var raport1 = CAP1_R030 + CAP1_R040; // This is a number with one digit after the decimal point
             if (raport1 > 0) {
-                var calcul1 = (CAP1_R050 * 1000) / raport1;
-                calcul1 = parseFloat(calcul1).toFixed(1);
+                var calcul1 = (CAP1_R050 * 1000) / raport1; // calcul1 is a number
+                calcul1 = Math.round(calcul1 * 10) / 10; // Now calcul1 is rounded to one decimal place as a number
                 if (calcul1 > 570 || calcul1 < 450) {
                     webform.warnings.push({
                         'fieldName': 'CAP1_R050_C' + arr_CAP1_inputs_2[i],
@@ -343,6 +357,9 @@ webform.validators.m1 = function (v, allowOverpass) {
                     });
                 }
             }
+
+
+
             // End 05-012
 
             // Start 05-013
