@@ -480,7 +480,8 @@ webform.validators.m1 = function (v, allowOverpass) {
             // Start 05-037
             if (CAP1_R031 > 0) {
                 var calcul3 = ((CAP1_R074 * 1000) / (CAP1_R031)) / 3;
-                calcul3 = parseFloat(calcul3).toFixed(1);
+                //calcul3 = parseFloat(calcul3).toFixed(1);
+                calcul3 = roundToDecimal(calcul3, 1);
                 if ((calcul3 < 8000) || (calcul3 > 18000)) {
                     webform.warnings.push({
                         'fieldName': 'CAP1_R074_C' + arr_CAP1_inputs_2[i],
@@ -494,7 +495,8 @@ webform.validators.m1 = function (v, allowOverpass) {
             // Start 05-039
             if (CAP1_R040 > 0) {
                 var calcul4 = ((CAP1_R073 * 1000) / (CAP1_R040)) / 3;
-                calcul4 = parseFloat(calcul4).toFixed(1);
+                //calcul4 = parseFloat(calcul4).toFixed(1);
+                calcul4 = roundToDecimal(calcul4, 1);
                 if ((calcul4 < 5000) || (calcul4 > 20000)) {
                     webform.warnings.push({
                         'fieldName': 'CAP1_R073_C' + arr_CAP1_inputs_2[i],
@@ -550,7 +552,8 @@ webform.validators.m1 = function (v, allowOverpass) {
             var SumF1 = CAP1_R030 - CAP1_R031;
             if (SumF1 != 0) {
                 var calcul5 = ((CAP1_R070 - CAP1_R074) * 1000 / (CAP1_R030 - CAP1_R031)) / 3;
-                calcul5 = parseFloat(calcul5).toFixed(1);
+                //calcul5 = parseFloat(calcul5).toFixed(1);
+                calcul5 = roundToDecimal(calcul5, 1);
                 if (calcul5 <= 4000) {
                     webform.warnings.push({
                         'fieldName': 'CAP1_R070_C' + arr_CAP1_inputs_2[i],
@@ -999,7 +1002,8 @@ webform.validators.m1 = function (v, allowOverpass) {
                     var max_CAP2_R120 = 40000 * CAP2_R120;
                     var max_CAP2_R160 = 0;
                     max_CAP2_R160 = (max_CAP2_R020 + max_CAP2_R030 + max_CAP2_R040 + max_CAP2_R050 + max_CAP2_R060 + max_CAP2_R070 + max_CAP2_R080 + max_CAP2_R090 + max_CAP2_R100 + max_CAP2_R110 + max_CAP2_R120 + max_CAP2_R160) / 1000;
-                    max_CAP2_R160 = parseFloat(max_CAP2_R160).toFixed(1);
+                    //max_CAP2_R160 = parseFloat(max_CAP2_R160).toFixed(1);
+                    max_CAP2_R160 = roundToDecimal(max_CAP2_R160, 1);
                     if ((CAP2_R160 < min_CAP2_R160) || (CAP2_R160 > max_CAP2_R160)) {
                         webform.warnings.push({
                             'fieldName': 'CAP2_R160_C' + arr_CAP2_inputs_2[i],
@@ -1024,7 +1028,8 @@ webform.validators.m1 = function (v, allowOverpass) {
                     var max_CAP2_R110 = 30000 * CAP2_R110;
                     var max_CAP2_R160 = 0;
                     max_CAP2_R160 = (max_CAP2_R020 + max_CAP2_R030 + max_CAP2_R040 + max_CAP2_R050 + max_CAP2_R060 + max_CAP2_R070 + max_CAP2_R080 + max_CAP2_R090 + max_CAP2_R100 + max_CAP2_R110 + max_CAP2_R160) / 1000;
-                    max_CAP2_R160 = parseFloat(max_CAP2_R160).toFixed(1);
+                    //max_CAP2_R160 = parseFloat(max_CAP2_R160).toFixed(1);
+                    max_CAP2_R160 = roundToDecimal(max_CAP2_R160, 1);
                     if ((CAP2_R160 > max_CAP2_R160)) {
                         webform.errors.push({
                             'fieldName': 'CAP2_R160_C' + arr_CAP2_inputs_2[i],
@@ -1087,7 +1092,8 @@ webform.validators.m1 = function (v, allowOverpass) {
             }
             if (CAP1_R073 > 0) {
                 var calcul6 = ((CAP1_R070) - (CAP1_R073)) / 3;
-                calcul6 = parseFloat(calcul6).toFixed(1);
+                //calcul6 = parseFloat(calcul6).toFixed(1);
+                calcul6 = roundToDecimal(calcul6, 1);
                 if (CAP2_R160 > calcul6) {
                     webform.warnings.push({
                         'fieldName': 'CAP2_R160_C' + arr_CAP1_2_inputs_1[i],
@@ -1113,7 +1119,8 @@ webform.validators.m1 = function (v, allowOverpass) {
             }
             if (CAP1_R010 > 0) {
                 var calcul7 = (CAP1_R030 * 100) / CAP1_R010;
-                calcul7 = parseFloat(calcul7).toFixed(1);
+                //calcul7 = parseFloat(calcul7).toFixed(1);
+                calcul7 = roundToDecimal(calcul7, 1);
                 if (calcul7 >= 70 && CAP2_R010 == 0) {
                     webform.warnings.push({
                         'fieldName': 'CAP2_R010_C' + arr_CAP1_2_inputs_1[i],
@@ -1154,7 +1161,8 @@ webform.validators.m1 = function (v, allowOverpass) {
             CAP2_R160_C1 = parseFloat(values['CAP2_R160_C1']);
         }
         var calcul8 = (CAP2_R160_C1 * 1000 / CAP2_R010_C1) / CAP1_R120_C1 * 100;
-        calcul8 = parseFloat(calcul8).toFixed(1);
+        //calcul8 = parseFloat(calcul8).toFixed(1);
+        calcul8 = roundToDecimal(calcul8, 1);
         if ((calcul8 < 85) || (calcul8 > 130)) {
             webform.warnings.push({
                 'fieldName': 'CAP2_R160_C1',
@@ -1181,7 +1189,8 @@ webform.validators.m1 = function (v, allowOverpass) {
         var SumF3 = CAP1_R030_C1 - CAP2_R010_C1;
         if ((SumF2 != 0) && (SumF3 != 0)) {
             var calcul9 = (SumF2 / 3 - CAP2_R160_C1) * 1000 / SumF3;
-            calcul9 = parseFloat(calcul9).toFixed(1);
+            //calcul9 = parseFloat(calcul9).toFixed(1);
+            calcul9 = roundToDecimal(calcul9, 1);
             if (calcul9 <= 3000) {
                 webform.warnings.push({
                     'fieldName': 'CAP1_R070_C1',
