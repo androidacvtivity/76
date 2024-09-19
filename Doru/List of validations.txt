@@ -1,0 +1,88 @@
+Here is the complete list of **warnings** and **errors** with their **original descriptions** as found in the provided file:
+
+### Errors:
+1. **Cod eroare: A.09**
+   - *Description*: Introduceți doar un număr de telefon format din 9 cifre. Prima cifră a numărului de telefon trebuie să fie 0.
+   
+2. **Cod eroare: 05-002**
+   - *Description*: Col.1 trebuie să fie egală cu suma Col.2-12 pentru rândul @row. Valoarea Col.1: [@col1], Suma Col.2-12: [@colSum].
+
+3. **Cod eroare: 05-003**
+   - *Description*: R.71 ≤ R.70 pe toate coloanele.
+
+4. **Cod eroare: 05-014**
+   - *Description*: R.31 ≤ R.30 -> [@CAP1_R31] ≤ [@CAP1_R30].
+
+5. **Cod eroare: 05-021**
+   - *Description*: Pentru orice coloană cu date există cod CAEM, Cap.1-2.
+
+6. **Cod eroare: 05-030**
+   - *Description*: Dacă există R.40 ar trebui să fie R.73 și invers, pe toate coloanele.
+
+7. **Cod eroare: 05-031**
+   - *Description*: Cod CAEM nu trebuie să se repete.
+
+8. **Cod eroare: 05-040**
+   - *Description*: Dacă există R.10 ar trebui să fie R.30, pe toate coloanele.
+
+9. **Cod eroare: 05-042**
+   - *Description*: R.51 > R.52 -> [@CAP1_R51] > [@CAP1_R52].
+
+10. **Cod eroare: 07-007**
+    - *Description*: SUM(R..20, ..., 120) = R.10, pe toate coloanele. -> [@sum_CAP_R020_120] = [@CAP2_R10].
+
+11. **Cod eroare: 07-016**
+    - *Description*: Verificarea la maximum dacă lipsește R.120 -> Cap.2 R.160 = [@CAP2_R160], maxim = [@max_CAP2_R160].
+
+12. **Cod eroare: 07-009**
+    - *Description*: Verificarea la minimum și maximum. -> Cap.2 R.160 = [@CAP2_R160], minim = [@min_CAP2_R160] și maxim = [@max_CAP2_R160].
+
+### Warnings:
+1. **Cod atenționare: 05-007**
+   - *Description*: Suma R.(71, 72, 73, 74) ≤ R.70 -> [@sum_CAP1_R71_074] ≤ [@CAP1_R70].
+
+2. **Cod atenționare: 05-009**
+   - *Description*: R.20 ≤ R.10 -> [@CAP1_R20] ≤ [@CAP1_R10].
+
+3. **Cod atenționare: 05-010**
+   - *Description*: R.40 ≤ R.30 -> [@CAP1_R40] ≤ [@CAP1_R30].
+
+4. **Cod atenționare: 05-012**
+   - *Description*: R.50 * 1000 / (R.30 + R.40) ≤ 570 și > 450 pe toate coloanele. -> [@sum].
+
+5. **Cod atenționare: 05-013**
+   - *Description*: Dacă există R.30 ar trebui să fie R.70 și invers.
+
+6. **Cod atenționare: 05-023**
+   - *Description*: Dacă există R.30 ar trebui să fie și R.50 și invers, pentru toate coloanele.
+
+7. **Cod atenționare: 05-025**
+   - *Description*: Dacă există R.31 ar trebui să fie R.74 și invers, pe toate coloanele.
+
+8. **Cod atenționare: 05-028**
+   - *Description*: Col.1 R.30 ≤ R.10 -> [@CAP1_R31] ≤ [@CAP1_R10_C1].
+
+9. **Cod atenționare: 05-036**
+   - *Description*: (R.70 - R.73 * 1000 / R.30) / 3 > 5000 și < 20000 pe fiecare coloană. -> [@sum].
+
+10. **Cod atenționare: 05-037**
+    - *Description*: (R.74 * 1000 / R.31) / 3 > 8000 și < 18000 pe fiecare coloană. -> [@sum].
+
+11. **Cod atenționare: 05-039**
+    - *Description*: (R.73 * 1000 / R.40) / 3 > 5000 și < 20000 pe fiecare coloană. -> [@sum].
+
+12. **Cod atenționare: 07-006**
+    - *Description*: R.10 ≤ Cap.1 R.30, pe toate coloanele. -> [@CAP2_R10] ≤ [@CAP1_R30].
+
+13. **Cod atenționare: 07-015**
+    - *Description*: R.160 ≤ R.70 - R.73 / 3 Cap.1 pe toate coloanele. -> [@CAP2_R160] ≤ [@calcul6].
+
+14. **Cod atenționare: 07-017**
+    - *Description*: R.30 * 100 / R.10 ≥ 70%, pe toate coloanele.
+
+15. **Cod atenționare: 07-018**
+    - *Description*: Salariul minim = 5000 lei. -> [@CAP2_R20].
+
+---
+
+These descriptions are provided exactly as they appear in your file in the original language.
