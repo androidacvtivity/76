@@ -117,6 +117,7 @@ webform.validators.m1 = function (v, allowOverpass) {
     var values = Drupal.settings.mywebform.values;
 
     validatePhoneNumber(values.PHONE);
+    validateCAEM_COL1_CAP1(values.CAEM);
 
 
     //    
@@ -168,7 +169,38 @@ webform.validators.m1 = function (v, allowOverpass) {
 
 
     //--------------------------------------
-    // Inside webform.validators.m1 function
+    // function validateCAEM_COL1_CAP1(values) {
+    //     // Initialize the values object if undefined
+    //     if (typeof values === 'undefined') {
+    //         values = {};
+    //     }
+
+    //     // Use the Select2 API to retrieve the selected CAEM value from the main field
+    //     var caem = jQuery('#CAEM').select2('val');  // Get CAEM from the main activity
+    //     var cap1_caem_c2_value = jQuery('#CAP1_CAEM_C2').select2('val');  // Get the value from the second field (Col 2)
+
+    //     console.log('Main CAEM value:', caem);
+    //     console.log('CAP1 CAEM C2 value:', cap1_caem_c2_value);
+
+    //     // Handle case when fields_CAP1_CAEM2 (second column) is undefined or empty
+    //     if (typeof cap1_caem_c2_value === 'undefined' || cap1_caem_c2_value === null || cap1_caem_c2_value === '') {
+    //         // Optionally add an error for undefined or empty values
+    //         webform.errors.push({
+    //             'fieldName': 'CAP1_CAEM_C2',
+    //             'msg': Drupal.t('Cod eroare: A.015 Trebuie selectat un cod CAEM pentru coloana 2.')
+    //         });
+    //         return; // Exit the function early since no valid CAEM is selected in column 2
+    //     }
+
+    //     // Check if the CAEM value from the main activity matches the second field
+    //     if (caem !== cap1_caem_c2_value) {
+    //         // Push error if CAEM does not match
+    //         webform.errors.push({
+    //             'fieldName': 'CAP1_CAEM_C1',
+    //             'msg': Drupal.t(`Cod eroare: A.014 Cod CAEM (${caem}) trebuie sa fie acelasi ca si in Activitatea principală (${cap1_caem_c2_value})`)
+    //         });
+    //     }
+    // }
 
 
 
@@ -197,6 +229,8 @@ webform.validators.m1 = function (v, allowOverpass) {
 
             // Start 05-021
             var fields_CAP1_CAEM2 = jQuery('#CAP1 thead tr td:nth-child(' + arr_CAP1_inputs_2[i] + ')').find('select').val();
+
+            
             var CAP1_R10 = 0;
             if (!isNaN(parseFloat(values['CAP1_R10_C' + arr_CAP1_inputs_2[i]]))) {
                 CAP1_R10 = parseFloat(values['CAP1_R10_C' + arr_CAP1_inputs_2[i]]);
@@ -208,6 +242,9 @@ webform.validators.m1 = function (v, allowOverpass) {
                     });
                 }
             }
+
+
+
             var CAP1_R20 = 0;
             if (!isNaN(parseFloat(values['CAP1_R20_C' + arr_CAP1_inputs_2[i]]))) {
                 CAP1_R20 = parseFloat(values['CAP1_R20_C' + arr_CAP1_inputs_2[i]]);
@@ -1394,12 +1431,7 @@ function validateCAEM2(values) {
         trimValue = Number(values['TRIM']);
     }
 
-    //  // Preluăm valoarea CAEM2
-    var trimValue = 0;
-    if (!isNaN(Number(values['TRIM']))) {
-        trimValue = Number(values['TRIM']);
-    }
-
+   
     var caemFields = [
         'CAP2_CAEM_C2', 'CAP2_CAEM_C3', 'CAP2_CAEM_C4', 'CAP2_CAEM_C5',
         'CAP2_CAEM_C6', 'CAP2_CAEM_C7', 'CAP2_CAEM_C8', 'CAP2_CAEM_C9',
@@ -1439,59 +1471,39 @@ function validateCAEM2(values) {
 }
 
 
-
-// -------------------------
-
-function validateCAEM2(values) {
-    // Preluăm valoarea TRIM
-    var trimValue = 0;
-    if (!isNaN(Number(values['TRIM']))) {
-        trimValue = Number(values['TRIM']);
+function validateCAEM_COL1_CAP1(values) {
+    // Initialize the values object if undefined
+    if (typeof values === 'undefined') {
+        values = {};
     }
 
-    //  // Preluăm valoarea CAEM2
-    var CAEM2Value = 0;
-    if (!isNaN(Number(values['CAEM']))) {
-        CAEM2Value = Number(values['CAEM']);
+    // Use the Select2 API to retrieve the selected CAEM value from the main field
+    var caem = jQuery('#CAEM').select2('val');  // Get CAEM from the main activity
+    var cap1_caem_c2_value = jQuery('#CAP1_CAEM_C2').select2('val');  // Get the value from the second field (Col 2)
+
+    console.log('Main CAEM value:', caem);
+    console.log('CAP1 CAEM C2 value:', cap1_caem_c2_value);
+
+    // Handle case when fields_CAP1_CAEM2 (second column) is undefined or empty
+    if (typeof cap1_caem_c2_value === 'undefined' || cap1_caem_c2_value === null || cap1_caem_c2_value === '') {
+        // Optionally add an error for undefined or empty values
+        webform.errors.push({
+            'fieldName': 'CAP1_CAEM_C2',
+            'msg': Drupal.t('Cod eroare: A.015 Trebuie selectat un cod CAEM pentru coloana 2.')
+        });
+        return; // Exit the function early since no valid CAEM is selected in column 2
     }
 
-    var caemFields = [
-        'CAP2_CAEM_C2', 'CAP2_CAEM_C3', 'CAP2_CAEM_C4', 'CAP2_CAEM_C5',
-        'CAP2_CAEM_C6', 'CAP2_CAEM_C7', 'CAP2_CAEM_C8', 'CAP2_CAEM_C9',
-        'CAP2_CAEM_C10', 'CAP2_CAEM_C11', 'CAP2_CAEM_C12'
-    ];
-
-    var caem2HasData = false;
-    var errors = [];
-
-    // Iterăm prin câmpurile CAEM pentru a verifica dacă sunt completate
-    for (var i = 0; i < caemFields.length; i++) {
-        var caemField = values[caemFields[i]]; // CAEM specific coloanei
-
-        // Verificăm dacă CAEM este completat
-        if (caemField && caemField !== '') {
-            caem2HasData = true;
-
-            // Dacă TRIM nu este 3 și CAEM este completat, afișăm eroare
-            if (trimValue != 3) {
-                errors.push({
-                    'fieldName': caemFields[i],
-                    'weight': 1,
-                    'msg': Drupal.t('Eroare: Câmpul [@fieldName] (genul de activitate) este completat, dar TRIM nu este egal cu 3. Vă rugăm să corectați.', {
-                        '@fieldName': caemFields[i]
-                    })
-                });
-            }
-        }
+    // Check if the CAEM value from the main activity matches the second field
+    if (caem !== cap1_caem_c2_value) {
+        // Push error if CAEM does not match
+        webform.errors.push({
+            'fieldName': 'CAP1_CAEM_C1',
+            'msg': Drupal.t(`Cod eroare: A.014 Cod CAEM (${caem}) trebuie sa fie acelasi ca si in Activitatea principală (${cap1_caem_c2_value})`)
+        });
     }
-
-    // Returnăm erorile, dacă există
-    if (errors.length > 0) {
-        return errors;
-    }
-
-    return null; // Nicio eroare
 }
+
 
 
 // -------------------------
