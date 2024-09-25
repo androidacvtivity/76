@@ -117,6 +117,7 @@ webform.validators.m1 = function (v, allowOverpass) {
     var values = Drupal.settings.mywebform.values;
 
     validatePhoneNumber(values.PHONE);
+    validateCAEM_COL1_CAP1(values.CAEM);
 
 
     //    
@@ -168,8 +169,32 @@ webform.validators.m1 = function (v, allowOverpass) {
 
 
     //--------------------------------------
-    // Inside webform.validators.m1 function
+    function validateCAEM_COL1_CAP1(values) {
+        // Retrieve the value from the CAEM dropdown
+       
+         var fields_CAP1_CAEM2 = jQuery('#CAP1 thead tr td:nth-child(' + 2 + ')').find('select').val();
 
+        var fields_CAEM2 = values.CAEM;
+
+        // Handle case when fields_CAP1_CAEM2 is undefined (nothing selected)
+        if (typeof fields_CAP1_CAEM2 === 'undefined' || fields_CAP1_CAEM2 === null || fields_CAP1_CAEM2 === '') {
+            // Optionally add an error for undefined or empty fields_CAP1_CAEM2
+            webform.errors.push({
+                'fieldName': 'CAP1_CAEM_C1',
+                'msg': Drupal.t('Cod eroare: A.015 Trebuie selectat un cod CAEM pentru Activitatea principală.')
+            });
+            return; // Exit the function early since no valid CAEM is selected
+        }
+
+        // Check if the CAEM value matches the field 'fields_CAP1_CAEM2'
+        if (values.CAEM !== fields_CAP1_CAEM2) {  //In this case is values.CAEM = 
+            // Push error if CAEM does not match
+            webform.errors.push({
+                'fieldName': 'CAP1_CAEM_C1', // Specific field causing the error
+                'msg': Drupal.t(`Cod eroare: A.014 Cod CAEM (${values.CAEM}) trebuie sa fie acelasi ca si in Activitatea principală (${fields_CAP1_CAEM2})`)
+            });
+        }
+    }
 
 
     //-----------------------------------------------------
@@ -197,6 +222,8 @@ webform.validators.m1 = function (v, allowOverpass) {
 
             // Start 05-021
             var fields_CAP1_CAEM2 = jQuery('#CAP1 thead tr td:nth-child(' + arr_CAP1_inputs_2[i] + ')').find('select').val();
+
+            
             var CAP1_R10 = 0;
             if (!isNaN(parseFloat(values['CAP1_R10_C' + arr_CAP1_inputs_2[i]]))) {
                 CAP1_R10 = parseFloat(values['CAP1_R10_C' + arr_CAP1_inputs_2[i]]);
@@ -208,6 +235,9 @@ webform.validators.m1 = function (v, allowOverpass) {
                     });
                 }
             }
+
+
+
             var CAP1_R20 = 0;
             if (!isNaN(parseFloat(values['CAP1_R20_C' + arr_CAP1_inputs_2[i]]))) {
                 CAP1_R20 = parseFloat(values['CAP1_R20_C' + arr_CAP1_inputs_2[i]]);
@@ -1440,58 +1470,6 @@ function validateCAEM2(values) {
 
 
 
-// -------------------------
-
-function validateCAEM2(values) {
-    // Preluăm valoarea TRIM
-    var trimValue = 0;
-    if (!isNaN(Number(values['TRIM']))) {
-        trimValue = Number(values['TRIM']);
-    }
-
-    //  // Preluăm valoarea CAEM2
-    var CAEM2Value = 0;
-    if (!isNaN(Number(values['CAEM']))) {
-        CAEM2Value = Number(values['CAEM']);
-    }
-
-    var caemFields = [
-        'CAP2_CAEM_C2', 'CAP2_CAEM_C3', 'CAP2_CAEM_C4', 'CAP2_CAEM_C5',
-        'CAP2_CAEM_C6', 'CAP2_CAEM_C7', 'CAP2_CAEM_C8', 'CAP2_CAEM_C9',
-        'CAP2_CAEM_C10', 'CAP2_CAEM_C11', 'CAP2_CAEM_C12'
-    ];
-
-    var caem2HasData = false;
-    var errors = [];
-
-    // Iterăm prin câmpurile CAEM pentru a verifica dacă sunt completate
-    for (var i = 0; i < caemFields.length; i++) {
-        var caemField = values[caemFields[i]]; // CAEM specific coloanei
-
-        // Verificăm dacă CAEM este completat
-        if (caemField && caemField !== '') {
-            caem2HasData = true;
-
-            // Dacă TRIM nu este 3 și CAEM este completat, afișăm eroare
-            if (trimValue != 3) {
-                errors.push({
-                    'fieldName': caemFields[i],
-                    'weight': 1,
-                    'msg': Drupal.t('Eroare: Câmpul [@fieldName] (genul de activitate) este completat, dar TRIM nu este egal cu 3. Vă rugăm să corectați.', {
-                        '@fieldName': caemFields[i]
-                    })
-                });
-            }
-        }
-    }
-
-    // Returnăm erorile, dacă există
-    if (errors.length > 0) {
-        return errors;
-    }
-
-    return null; // Nicio eroare
-}
 
 
 // -------------------------
