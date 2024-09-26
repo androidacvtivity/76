@@ -1,0 +1,11 @@
+<div class="select2-widget-wrapper"><select name="CAEM" id="CAEM" field="CAEM"
+        class="caem Section-caem text error required select2-widget select2-hidden-accessible" maxlength="300"
+        tabindex="-1" aria-hidden="true">
+        <option value=""></option>
+    </select><span class="select2 select2-container select2-container--default error select2-container--focus" dir="ltr"
+        style="width: 200px;"><span class="selection"><span class="select2-selection select2-selection--single"
+                role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0"
+                aria-labelledby="select2-CAEM-container"><span class="select2-selection__rendered"
+                    id="select2-CAEM-container" title=""></span><span class="select2-selection__arrow"
+                    role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+            aria-hidden="true"></span></span></div>
